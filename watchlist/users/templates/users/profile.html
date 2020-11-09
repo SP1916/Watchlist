@@ -1,0 +1,38 @@
+{% extends 'movies/base.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+	.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+        margin: 0 auto;
+		border-radius: 50%;
+	}
+</style>
+
+<div class="row">
+    <div class="col-md-3 mb-3">
+        <div class="card card-body border-primary">
+            <img class="rounded-circle profile-pic" src="{{ request.user.profile.image.url }}">
+            <div class="text-center">
+                <h1 class='text-primary'>{{ user.username }}</h1>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form|crispy }}
+                {{ profile_form|crispy }}
+                <input class="btn btn-primary btn-block" type="submit" value="Update Information">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

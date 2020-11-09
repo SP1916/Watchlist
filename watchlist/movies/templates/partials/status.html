@@ -1,0 +1,33 @@
+<style>
+    #total-movies {
+    background-color: #4cb4c7;
+    }
+
+    #unwatched {
+    background-color: #7abecc;
+    }
+</style>
+
+<div class="row my-3">
+    <div class="col">
+        <div class="card text-center text-white" id="total-movies">
+            <div class="card-header">
+                <h4 class="card-title">Total Movies</h4>
+            </div>
+            <div class="card-body">
+                <h2>{{ total_movies }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card text-center text-white" id="unwatched">
+            <div class="card-header">
+                <h4 class="card-title">Unwatched</h4>
+            </div>
+            <div class="card-body">
+                <h2>{{ unwatched }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
