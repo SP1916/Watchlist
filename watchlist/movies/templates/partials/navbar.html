@@ -8,6 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav mr-auto">
         <a class="nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'movietowatch' %}">Recommendations</a>
 
         {% if request.user.is_staff %}
         <a class="nav-link" href="{% url 'admin-home' %}">Users Status</a>

@@ -1,7 +1,5 @@
 {% extends 'movies/base.html'%}
 
-{% load crispy_forms_tags %}
-
 {% block content %}
 <style>
     .user-img {
@@ -22,26 +20,7 @@
 {% include 'partials/status.html' %}
 
 <!-- Filter -->
-<div class="card">
-    <div class="card-header">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Filter Watchlist
-          </button>
-    </div>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            <form method="get">
-
-                {{ filter.form|crispy }}
-
-                <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-search"></i> Search
-                </button>
-            
-            </form>
-        </div>
-    </div>
-</div>
+{% include 'partials/filter.html' %}
 
 
 <table class="table table-hover mt-5">
