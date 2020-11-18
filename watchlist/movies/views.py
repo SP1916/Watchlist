@@ -81,12 +81,24 @@ def movie_to_watch(request):
         movies = Movies.objects.exclude(title__in=watchlisted_movies)
     else:
         movies = Movies.objects.all()
+
+# if two users have same movie then it is repeated in recommendations 
+# so id of repeated movies are stored in exclude_id and excluded from query set
+    seen_title = []
+    exclude_id = []
+    for obj in movies:
+        if obj.title in seen_title:
+            exclude_id += [obj.id]
+        else:
+            seen_title += [obj.title]
+    movies = movies.exclude(id__in=exclude_id).order_by('-year')
+
 # djnago filter
     filter = MovieToWatchFilter(request.GET, queryset=movies)
     movies = filter.qs
 
     context = {
-        'movies': movies.order_by('-year'),
+        'movies': movies,
         'filter': filter
     }
     return render(request, 'movies/movie_to_watch.html', context)
