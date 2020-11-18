@@ -18,8 +18,8 @@ class Movies(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100)
-    year = models.IntegerField()
-    genre = models.CharField(max_length=50, choices=CATEGORY)
+    year = models.IntegerField(null=True, blank=True)
+    genre = models.CharField(max_length=50, choices=CATEGORY, null=True, blank=True)
     status = models.BooleanField(default=False)
 
     def __str__(self):
